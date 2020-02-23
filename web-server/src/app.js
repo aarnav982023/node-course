@@ -42,9 +42,25 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
+  if (!req.query.address) {
+    res.send({ error: "You must provide an address" });
+    return;
+  }
   res.send({
     forecast: "It's 18deg",
-    location: "Bangalore"
+    location: "Bangalore",
+    address: req.query.address
+  });
+});
+
+app.get("/products", (req, res) => {
+  if (!req.query.search) {
+    res.send({ error: "You must provide a search term" });
+    return;
+  }
+  console.log(req.query);
+  res.send({
+    products: []
   });
 });
 
