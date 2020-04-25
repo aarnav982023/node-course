@@ -2,54 +2,26 @@
 <html>
   <head>
     <title>Chat App</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
+    <link rel="icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="css/styles.min.css" />
   </head>
   <body>
-    <div class="container">
-      <h4>Chat App</h4>
-      <div id="messages"></div>
-      <form id="messageForm">
-        <div class="form-group mt-4">
+    <div class="centered-form">
+      <div class="centered-form__box">
+        <h1>Join</h1>
+        <form action="/chat.html">
+          <label for="username">Display Name</label>
           <input
-            class="form-control"
-            name="message"
-            placeholder="Message"
-          ></input>
-        </div>
-        <button id="messageSubmitButton" class="btn btn-primary" type="submit">
-          Send
-        </button>
-        <button id="sendLocationButton" class="btn btn-info" type="button">
-          Send Location
-        </button>
-      </form>
+            type="text"
+            name="username"
+            placeholder="Display Name"
+            required
+          />
+          <label for="room">Room Name</label>
+          <input type="text" name="room" placeholder="Room Name" />
+          <button>Join</button>
+        </form>
+      </div>
     </div>
-    <script id="message-template" type="text/html">
-      <div class="card mt-3">
-        <div class="card-body">
-          {{message}}
-        </div>
-      </div>
-    </script>
-    <script id="helpMessage-template" type="text/html">
-      <div class="mt-3">
-        <p>{{helpMessage}}</p>
-      </div>
-    </script>
-    <script id="location-template" type="text/html">
-      <div>
-        <a target="blank" href="{{location}}">My Current Location</a>  
-        </div>
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/chat.js"></script>
   </body>
 </html>
