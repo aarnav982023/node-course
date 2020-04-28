@@ -28,12 +28,12 @@ io.on("connection", (socket) => {
   console.log("New web socket connection");
 
   socket.on("join", ({ username, room }, callback) => {
-    socket.join(room);
     const { user, error } = addUser({ id: socket.id, username, room });
     if (error) {
       return callback(error);
     }
-
+    console.log(user.room);
+    socket.join(user.room);
     socket.emit("helpMessage", generateMessage(user.username, "Welcome!"));
     socket.broadcast
       .to(room)
@@ -41,7 +41,6 @@ io.on("connection", (socket) => {
         "helpMessage",
         generateMessage(user.username, `${username} has joined!`)
       );
-
     io.to(user.room).emit("roomData", {
       room: user.room,
       users: getUsersInRoom(user.room),
